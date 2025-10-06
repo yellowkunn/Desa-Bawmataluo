@@ -1,4 +1,4 @@
-        <div class="lg:pt-[150px] pt-12">
+        <div class="lg:pt-[50px] pt-12">
             <div class="flex justify-center">
                 <div class="max-w-4xl">
                     <h1 class="mb-2 mt-[10px] text-3xl lg:text-6xl font-medium text-center leading-tight text-black">

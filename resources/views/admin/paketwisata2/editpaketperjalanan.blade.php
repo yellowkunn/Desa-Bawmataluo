@@ -71,7 +71,7 @@
                 <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700">
                     Update Paket
                 </button>
-                <a href="{{ route('paketwisata2.index') }}"
+                <a href="{{ route('paketwisata.index') }}"
                     class="bg-gray-400 text-white px-6 py-3 rounded-xl shadow hover:bg-gray-500">
                     Batal
                 </a>

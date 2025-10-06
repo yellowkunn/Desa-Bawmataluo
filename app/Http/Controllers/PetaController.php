@@ -7,13 +7,19 @@ use App\Models\Peta;
 
 class PetaController extends Controller
 {
-    public function index()
-    {
-        $peta = Peta::latest()->get();
-        $title = Peta::latest()->value('title');
-        $background = Peta::latest()->value('background');
-        return view('admin.peta.index', compact('peta', 'title', 'peta', 'background'));
-    }
+public function index()
+{
+    $all = Peta::latest()->get();
+
+    $latest = $all->first();
+    $peta   = $all->skip(1); 
+
+    $title = $latest?->title;
+    $background = $latest?->background;
+
+    return view('admin.peta.index', compact('peta', 'title', 'background'));
+}
+
 
     public function editkonten()
     {

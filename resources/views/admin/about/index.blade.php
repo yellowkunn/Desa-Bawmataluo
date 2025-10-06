@@ -2,8 +2,8 @@
 @section('container')
     <div class="sm:ml-64">
         <div class="w-full h-[50vh] relative overflow-hidden">
-            <img src="{{ asset($about->background) }}" class="w-full h-full object-cover absolute top-0 left-0 z-0 brightness-75"
-                alt="Background">
+            <img src="{{ asset($about->background) }}"
+                class="w-full h-full object-cover absolute top-0 left-0 z-0 brightness-75" alt="Background">
         </div>
         @if (session('success'))
             <div class="bg-green-100 text-green-700 p-4 mb-4 rounded-lg">
@@ -66,10 +66,11 @@
                         </h5>
                         <ol
                             class="list-decimal text-xs lg:text-[14px] pl-6 mb-3 mt-[18px] font-normal text-black leading-relaxed space-y-2">
-                            @foreach (json_decode($about->misiContent) as $poin)
+                            @foreach (json_decode($about->misiContent, true) as $poin)
                                 <li>{{ $poin }}</li>
                             @endforeach
                         </ol>
+
 
                     </div>
                 </div>

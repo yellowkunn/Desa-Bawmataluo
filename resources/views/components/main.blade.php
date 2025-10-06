@@ -12,7 +12,7 @@
 <body class="font-poppins">
     @include('components.navbar')
     @yield('container')
-    @include('components.kontak')
+    @include('components.kontak', ['kontak' => $kontak])
     @include('components.footer')
 </body>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>

@@ -11,7 +11,7 @@ class PaketWisata2Controller extends Controller
     public function index()
     {
         $pakets = PaketWisata2::with('itineraries')->get();
-        return view('paketwisata.index', compact('pakets'));
+        return view('admin.paketwisata.index', compact('pakets'));
     }
 
     public function create()
@@ -66,29 +66,41 @@ class PaketWisata2Controller extends Controller
         return view('admin.paketwisata2.editpaketperjalanan', compact('paket', 'availableLabels'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $paket = PaketWisata2::findOrFail($id);
+public function update(Request $request, $id)
+{
+    $paket = PaketWisata2::findOrFail($id);
 
-        $request->validate([
-            'label' => 'required|string',
-            'itinerary' => 'required|array',
-            'itinerary.*.hari' => 'nullable|string',
-            'itinerary.*.waktu' => 'nullable|string',
-            'itinerary.*.deskripsi' => 'nullable|string',
-        ]);
+    $request->validate([
+        'label' => 'required|string',
+        'itinerary' => 'nullable|array',
+        'itinerary.*.hari' => 'nullable|string',
+        'itinerary.*.waktu' => 'nullable|string',
+        'itinerary.*.deskripsi' => 'nullable|string',
+    ]);
 
-        // update paket
-        $paket->update([
-            'label' => $request->label,
-        ]);
+    // hapus itinerary lama
+    $paket->itineraries()->delete();
 
-        // hapus itinerary lama lalu simpan ulang
-        $paket->itineraries()->delete();
-        foreach ($request->itinerary as $itinerary) {
-            $paket->itineraries()->create($itinerary);
-        }
+    $itineraries = $request->input('itinerary', []);
 
-        return redirect()->route('paketwisata.index')->with('success', 'Paket berhasil diperbarui!');
+    // ✅ kalau itinerary kosong → hapus paket
+    if (empty($itineraries)) {
+        $paket->delete();
+        return redirect()->route('paketwisata.index')
+            ->with('success', 'Paket dihapus karena tidak ada itinerary.');
     }
+
+    // ✅ kalau ada itinerary → update paket & simpan itinerary baru
+    $paket->update([
+        'label' => $request->label,
+    ]);
+
+    foreach ($itineraries as $itinerary) {
+        $paket->itineraries()->create($itinerary);
+    }
+
+    return redirect()->route('paketwisata.index')->with('success', 'Paket berhasil diperbarui!');
+}
+
+
 }

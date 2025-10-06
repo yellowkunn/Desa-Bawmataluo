@@ -54,7 +54,22 @@ class AboutUsController extends Controller
         $about->visi = $request->visi;
         $about->visiContent = $request->visiContent;
         $about->misi = $request->misi;
-        $about->misiContent = $request->misiContent;
+
+        if ($request->filled('misiContent')) {
+            // pecah berdasarkan koma
+            $items = explode(',', $request->misiContent);
+
+            // trim spasi dan kutip
+            $items = array_map(function ($item) {
+                return trim($item, " \t\n\r\0\x0B\"'");
+            }, $items);
+
+            // filter kosong
+            $about->misiContent = json_encode(array_filter($items));
+        } else {
+            $about->misiContent = json_encode([]);
+        }
+
         $about->save();
 
         return redirect()->route('about.index')->with('success', 'Data berhasil diperbarui');

@@ -48,10 +48,12 @@
                     class="w-full border rounded-lg p-3 mt-1">
             </div>
 
-            <div>
-                <label class="block text-gray-700">Misi Content</label>
-                <textarea name="misiContent" rows="3" class="w-full border rounded-lg p-3 mt-1">{{ old('misiContent', $about->misiContent ?? '') }}</textarea>
-            </div>
+            <textarea name="misiContent" class="w-full border rounded-lg p-3 mt-1" rows="5">
+{{ old('misiContent', isset($about->misiContent) ? implode(', ', json_decode($about->misiContent, true)) : '') }}
+</textarea>
+            <p class="text-gray-500 text-sm mt-1">Pisahkan poin dengan tanda koma (,)</p>
+
+
 
             <!-- Input Gambar -->
             <div>

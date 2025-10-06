@@ -13,6 +13,10 @@ class DestinasiWisataSeeder extends Seeder
      */
     public function run(): void
     {
+        DestinasiWisata::create([
+            'title' => 'Destinasi Wisata',
+            'background' => 'images/bg2.jpeg',
+        ]);
         $data = [
             [
                 'title' => 'Destinasi Wisata',
@@ -35,6 +39,7 @@ class DestinasiWisataSeeder extends Seeder
                 'gambar' => 'images/destinasi/destinasi3.jpg',
                 'cardContent' => "Pantai terkenal dengan ombak kanan (right-hand break) terbaik di dunia, menjadi tuan rumah acara selancar internasional (Nias Pro). Teluk Lagundri adalah area yang tenang, ideal untuk berenang, menikmati sunset, dan melihat para peselancar beraksi dari bibir Pantai."
             ],
+            
         ];
 
         foreach ($data as $item) {

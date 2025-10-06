@@ -10,7 +10,7 @@ class DestinasiWisataController extends Controller
 {
     public function index()
     {
-        $wisata = DestinasiWisata::latest()->get();
+        $wisata = DestinasiWisata::whereNotNull('cardTitle')->latest()->get();
         $title = DestinasiWisata::latest()->value('title');
         $background = DestinasiWisata::latest()->value('background');
         return view('admin.wisata.index', compact('wisata', 'title', 'background'));
