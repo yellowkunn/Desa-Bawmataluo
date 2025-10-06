@@ -11,3 +11,9 @@
 1. **Clone the project**
    ```bash
    cd the-project
+   npm install -D tailwindcss@3 postcss autoprefixer npx tailwindcss init -p
+   php artisan key:generate
+   php artisan:migrate
+   php artisan migrate:fresh --seed
+   php artisan serve
+   npm run dev
