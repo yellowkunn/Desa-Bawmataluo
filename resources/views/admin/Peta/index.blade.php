@@ -11,6 +11,11 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if (session('error'))
+            <div class=" bg-red-100 text-red-700 p-4 mb-4 rounded-lg">
+                {{ session('error') }}
+            </div>
+        @endif
 
         <div class="lg:pt-[150px] pt-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-0 md:px-8 2xl:px-0 mb-12">

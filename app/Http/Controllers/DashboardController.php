@@ -43,27 +43,35 @@ class DashboardController extends Controller
 
     public function update(Request $request, Dashboard $dashboard)
     {
-        $request->validate([
-            'title1' => 'nullable|string|max:255',
-            'title2' => 'nullable|string|max:255',
-            'konten' => 'nullable|string',
-            'background' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+        try {
+            $request->validate([
+                'title1' => 'nullable|string|max:255',
+                'title2' => 'nullable|string|max:255',
+                'konten' => 'nullable|string',
+                'background' => 'nullable|image|mimes:jpg,jpeg,png|max:10240',
+            ]);
 
-        // Handle upload background
-        if ($request->hasFile('background')) {
-            $filename = time() . '.' . $request->background->extension();
-            $request->background->move(public_path('uploads/dashboard'), $filename);
-            $dashboard->background = 'uploads/dashboard/' . $filename;
+            // Handle upload background
+            if ($request->hasFile('background')) {
+                $filename = time() . '.' . $request->background->extension();
+                $request->background->move(public_path('uploads/dashboard'), $filename);
+                $dashboard->background = 'uploads/dashboard/' . $filename;
+            }
+
+            $dashboard->update([
+                'title1' => $request->title1,
+                'title2' => $request->title2,
+                'konten' => $request->konten,
+                'background' => $dashboard->background,
+            ]);
+
+            return redirect()
+                ->route('dashboard.index')
+                ->with('success', 'Section berhasil diperbarui');
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        $dashboard->update([
-            'title1' => $request->title1,
-            'title2' => $request->title2,
-            'konten' => $request->konten,
-            'background' => $dashboard->background,
-        ]);
-
-        return redirect()->route('dashboard.index')->with('success', 'Section berhasil diperbarui');
     }
 }

@@ -11,6 +11,11 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if (session('error'))
+            <div class=" bg-red-100 text-red-700 p-4 mb-4 rounded-lg">
+                {{ session('error') }}
+            </div>
+        @endif
 
         <div class="lg:pt-[150px] pt-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-0 md:px-8 2xl:px-0">
@@ -52,8 +57,7 @@
                                         src="{{ asset($item->gambar) }}" alt="{{ $item->cardTitle }}">
 
                                     <h5 class="mt-5 text-center font-semibold">{{ $item->cardTitle }}</h5>
-                                    <p class="text-center text-gray-600">Harga mulai dari:
-                                        Rp{{ number_format($item->harga, 0, ',', '.') }}</p>
+                                    <p class="text-center text-gray-600">Harga mulai dari: {{ $item->harga }}</p>
 
                                     <div class="mt-4 flex gap-2 justify-center">
                                         <a href="{{ route('paketwisata.edit', $item->id) }}"
