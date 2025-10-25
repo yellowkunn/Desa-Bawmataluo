@@ -1,8 +1,7 @@
 @extends('components.main')
 @section('container')
-    <div class="w-full h-[50vh] relative overflow-hidden">
-        <img src="{{ asset($kontak->background) }}" class="w-full h-full object-cover absolute top-0 left-0 z-0 brightness-75"
-            alt="Background">
+    <div class="w-full h-[200px] lg:h-[300px]">
+        <img src="{{ asset($kontak->background) }}" class="w-full h-full object-cover brightness-75" alt="Background">
     </div>
 
     <div class="lg:pt-[150px] pt-12">

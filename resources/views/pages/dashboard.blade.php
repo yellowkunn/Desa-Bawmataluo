@@ -27,7 +27,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-0 md:px-8 2xl:px-0">
             <div class="flex flex-wrap xl:justify-between justify-center gap-y-7">
 
-                <div class="2xl:max-w-3xl xl:max-w-xl max-w-full bg-white rounded-lg shadow-sm content-center ">
+                <div class="2xl:max-w-3xl xl:max-w-xl max-w-full bg-white rounded-lg content-center ">
                     <h5 class="mb-2 text-xs lg:text-2xl font-normal text-center tracking-tight text-black">
                         {{ $tentang->title1 }}
                     </h5>

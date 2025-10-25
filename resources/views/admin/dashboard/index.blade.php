@@ -35,7 +35,7 @@
         </div>
 
         {{-- TENTANG SECTION --}}
-        <div class="lg:pt-[150px] pt-12">
+        <div class="lg:pt-[100px] pt-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-0 md:px-8 2xl:px-0">
 
                 {{-- Tombol Edit Section --}}
@@ -58,7 +58,7 @@
 
                 {{-- Konten Tentang --}}
                 <div class="flex flex-wrap xl:justify-between justify-center gap-y-7">
-                    <div class="2xl:max-w-3xl xl:max-w-xl max-w-full bg-white rounded-lg shadow-sm content-center p-6">
+                    <div class="2xl:max-w-3xl xl:max-w-xl max-w-full bg-white rounded-lg content-center p-6">
                         <h5 class="mb-2 text-xs lg:text-2xl font-normal text-center tracking-tight text-black">
                             {{ $tentang->title1 }}
                         </h5>
