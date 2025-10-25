@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Aboutus;
+use App\Models\AboutUs;
 
 class TentangKamiSeeder extends Seeder
 {
